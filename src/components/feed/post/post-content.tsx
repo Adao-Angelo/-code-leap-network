@@ -1,3 +1,5 @@
+import { formatDistanceToNowStrict, parseISO } from 'date-fns';
+
 type PostContentProps = {
   username: string;
   createdAt: string;
@@ -9,13 +11,16 @@ export default function PostContent({
   createdAt,
   content,
 }: PostContentProps) {
+  const date = parseISO(createdAt);
+
+  const timeAgo = formatDistanceToNowStrict(date, { addSuffix: true });
   return (
     <>
       <div className='flex justify-between mb-4 text-text-gray text-[1.125rem]'>
         <p>
           @<span className='font-semibold'>{username}</span>
         </p>
-        <p>{createdAt}</p>
+        <p>{timeAgo}</p>
       </div>
 
       <div className='text-[1.125rem] whitespace-pre-line'>{content}</div>
