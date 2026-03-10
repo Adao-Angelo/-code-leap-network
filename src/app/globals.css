@@ -1,8 +1,14 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
+  --background: #dddddd;
   --foreground: #171717;
+
+  --color-primary: #7695ec;
+  --color-destructive: #ff5151;
+  --color-border-gray: #999999;
+  --color-text-gray: #777777;
+  --color-light-gray: #cccccc;
 }
 
 @theme inline {
@@ -10,17 +16,90 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-roboto);
   --font-mono: monospace;
+
+  --color-primary: var(--color-primary);
+  --color-destructive: var(--color-destructive);
+  --color-border-gray: var(--color-border-gray);
+  --color-text-gray: var(--color-text-gray);
+  --color-light-gray: var(--color-light-gray);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    --color-primary: #7695ec;
+    --color-destructive: #ff5151;
+    --color-border-gray: #999999;
+    --color-text-gray: #777777;
   }
-}
+} */
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+.spinner,
+.mini-spinner,
+.white-mini-spinner {
+  display: grid;
+  border-radius: 50%;
+  border: 4px solid #0000;
+  animation: spin 1s infinite linear;
+}
+
+.spinner {
+  width: 56px;
+  height: 56px;
+  border-right-color: oklab(68.415% -0.00478 -0.13349);
+}
+
+.mini-spinner {
+  width: 28px;
+  height: 28px;
+  border-width: 3px;
+  border-right-color: oklab(68.415% -0.00478 -0.13349);
+}
+
+.white-mini-spinner {
+  width: 28px;
+  height: 28px;
+  border-width: 3px;
+  border-right-color: oklab(100% 0 -0.00011);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.spinner::before,
+.mini-spinner::before,
+.white-mini-spinner::before {
+  content: '';
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+  animation: spin 1.6s infinite;
+}
+
+.spinner::after,
+.mini-spinner::after,
+.white-mini-spinner::after {
+  content: '';
+  grid-area: 1/1;
+  margin: 6px;
+  border: inherit;
+  border-radius: 50%;
+  animation: spin 2.4s infinite;
+}
+
+.mini-spinner::after,
+.white-mini-spinner::after {
+  margin: 4px;
 }
