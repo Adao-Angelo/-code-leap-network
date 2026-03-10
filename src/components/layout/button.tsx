@@ -26,6 +26,9 @@ export default function Button({
     disabled:opacity-60
     disabled:cursor-not-allowed
     font-bold
+    flex 
+    items-center
+    justify-center
   
   `;
 

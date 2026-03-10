@@ -13,12 +13,12 @@ export function useDeletePost() {
     mutationFn: (id: number) => PostsService.deletePost(id),
 
     onSuccess: () => {
-      toast.success('Post removido com sucesso!');
+      toast.success('Post deleted successfully!');
       queryClient.invalidateQueries({ queryKey: ['posts', 'list'] });
     },
 
     onError: (error: AxiosError<any>) => {
-      const msg = error?.response?.data?.message || 'Erro ao remover post';
+      const msg = error?.response?.data?.message || 'Failed to delete post';
       toast.error(Array.isArray(msg) ? msg[0] : msg);
     },
   });

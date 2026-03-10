@@ -14,12 +14,12 @@ export function useCreatePost() {
     mutationFn: (data: PostCreateDto) => PostsService.createPost(data),
 
     onSuccess: () => {
-      toast.success('Post Created.');
+      toast.success('Post created successfully!');
       queryClient.invalidateQueries({ queryKey: ['posts', 'list'] });
     },
 
     onError: (error: AxiosError<any>) => {
-      const msg = error?.response?.data?.message || 'Erro ao criar post';
+      const msg = error?.response?.data?.message || 'Failed to create post';
       toast.error(Array.isArray(msg) ? msg[0] : msg);
     },
   });

@@ -1,17 +1,24 @@
+'use client';
+
 import Button from '@/components/layout/button';
+import Loader from '@/components/layout/loader';
 import { Modal } from '@/components/layout/modal';
+import { useDeletePostModal } from '@/hooks/post/use-delete-post-modal';
+import { Post } from '@/services/careers/post.interfaces';
 
 type DeletePostModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onConfirm?: () => void;
+  post?: Post;
 };
 
 export default function DeletePostModal({
   isOpen,
   onClose,
-  onConfirm,
+  post,
 }: DeletePostModalProps) {
+  const { isPending, handleDelete } = useDeletePostModal({ post, onClose });
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className='rounded-2xl p-8 w-[41.25rem] max-w-[90vw]'>
@@ -20,11 +27,16 @@ export default function DeletePostModal({
         </h2>
 
         <div className='flex justify-end gap-4'>
-          <Button variant='outline' onClick={onClose}>
+          <Button variant='outline' onClick={onClose} disabled={isPending}>
             Cancel
           </Button>
-          <Button onClick={onConfirm} variant='danger'>
-            Delete
+
+          <Button
+            variant='danger'
+            onClick={handleDelete}
+            disabled={isPending || !post?.id}
+          >
+            {isPending ? <Loader variant='white-mini' /> : 'Delete'}
           </Button>
         </div>
       </div>

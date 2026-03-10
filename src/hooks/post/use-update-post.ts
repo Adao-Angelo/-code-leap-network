@@ -15,12 +15,12 @@ export function useUpdatePost() {
       PostsService.updatePost(id, data),
 
     onSuccess: () => {
-      toast.success('Post updated');
+      toast.success('Post updated successfully!');
       queryClient.invalidateQueries({ queryKey: ['posts', 'list'] });
     },
 
     onError: (error: AxiosError<any>) => {
-      const msg = error?.response?.data?.message || 'Erro ao atualizar post';
+      const msg = error?.response?.data?.message || 'Failed to update post';
       toast.error(Array.isArray(msg) ? msg[0] : msg);
     },
   });
