@@ -4,7 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
 import Button from '@/components/layout/button';
-import InputField from '@/components/layout/form';
+
+import { FormField, FormInput } from '@/components/layout/form';
 import { useLogin } from '@/hooks/auth/use-login';
 import { LoginData, loginSchema } from '@/schemas/auth/login-schema';
 
@@ -32,13 +33,13 @@ export default function LoginForm() {
 
       <form onSubmit={handleSubmit(onSubmit)} className='mt-5'>
         <div className='mb-6'>
-          <InputField
-            id='username'
-            label='Please enter your username'
-            placeholder='John Doe'
-            {...register('username')}
-            errorMessage={errors.username?.message}
-          />
+          <FormField label='Please enter your username' error={errors.username}>
+            <FormInput
+              id='username'
+              placeholder='John Doe'
+              registration={register('username')}
+            />
+          </FormField>
         </div>
 
         <div className='flex justify-end'>
