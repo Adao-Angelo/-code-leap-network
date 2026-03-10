@@ -1,7 +1,7 @@
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
-type ButtonVariant = 'primary' | 'danger' | 'outline';
+type ButtonVariant = 'primary' | 'danger' | 'outline' | 'success';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
@@ -45,8 +45,14 @@ export default function Button({
     outline: `
       border border-border-gray
       text-black
-      hover:bg-border-gray/90
+      hover:bg-border-gray/10
       focus:ring-border-gray
+    `,
+    success: `
+      bg-success
+      text-white
+      hover:bg-success/90
+      focus:bg-success
     `,
   };
 

@@ -9,6 +9,7 @@
   --color-border-gray: #999999;
   --color-text-gray: #777777;
   --color-light-gray: #cccccc;
+  --color-success: #47b960;
 }
 
 @theme inline {
@@ -22,6 +23,7 @@
   --color-border-gray: var(--color-border-gray);
   --color-text-gray: var(--color-text-gray);
   --color-light-gray: var(--color-light-gray);
+  --color-success: var(--color-success);
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -39,7 +41,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-roboto), Arial, Helvetica, sans-serif;
 }
 
 .spinner,
