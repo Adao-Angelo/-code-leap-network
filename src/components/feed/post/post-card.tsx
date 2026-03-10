@@ -1,9 +1,9 @@
-import { Career } from '@/services/careers/interfaces';
+import { Post } from '@/services/careers/post.interfaces';
 import PostContent from './post-content';
 import PostHeader from './post-header';
 
 type PostCardProps = {
-  post: Career;
+  post: Post;
   onEdit: () => void;
   onDelete: () => void;
 };

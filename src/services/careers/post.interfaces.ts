@@ -1,15 +1,15 @@
-export interface CareerCreateDto {
+export interface PostCreateDto {
   username: string;
   title: string;
   content: string;
 }
 
-export interface CareerUpdateDto {
+export interface PostUpdateDto {
   title?: string;
   content?: string;
 }
 
-export interface Career {
+export interface Post {
   id: number;
   username: string;
   created_datetime: string;

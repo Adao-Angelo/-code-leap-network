@@ -5,14 +5,19 @@ import EditPostModal from '@/components/feed/modals/edit-post-modal';
 import PostForm from '@/components/feed/post-form/post-form';
 import PostCard from '@/components/feed/post/post-card';
 import Loader from '@/components/layout/loader';
-import { useCareers } from '@/hooks/career/use-careers';
+import { usePosts } from '@/hooks/career/use-posts';
+import { useUpdatePost } from '@/hooks/career/use-update-post';
+import { Post } from '@/services/careers/post.interfaces';
+
 import { useState } from 'react';
 
 export default function Home() {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [postToEdit, setPostToEdit] = useState<Post>();
 
-  const { data: Careers, isLoading, isError } = useCareers();
+  const { data: Posts, isLoading, isError } = usePosts();
+  const { mutate: updatePost } = useUpdatePost();
 
   return (
     <div className='flex items-center justify-center min-h-screen bg-gray-100'>
@@ -37,11 +42,14 @@ export default function Home() {
             </p>
           )}
 
-          {Careers?.results.map((Career) => (
+          {Posts?.results.map((post) => (
             <PostCard
-              key={Career.id}
-              post={Career}
-              onEdit={() => setIsEditModalOpen(true)}
+              key={post.id}
+              post={post}
+              onEdit={() => {
+                setPostToEdit(post);
+                setIsEditModalOpen(true);
+              }}
               onDelete={() => setIsDeleteModalOpen(true)}
             />
           ))}
@@ -55,6 +63,7 @@ export default function Home() {
 
       <EditPostModal
         isOpen={isEditModalOpen}
+        post={postToEdit}
         onClose={() => setIsEditModalOpen(false)}
         onSave={() => {}}
       />

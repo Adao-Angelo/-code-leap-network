@@ -1,4 +1,3 @@
-// src/components/post/PostForm.tsx
 'use client';
 
 import Button from '@/components/layout/button';
@@ -8,7 +7,7 @@ import { toast } from 'react-hot-toast';
 
 import { FormField, FormInput, FormTextarea } from '@/components/layout/form';
 import Loader from '@/components/layout/loader';
-import { useCreateCareer } from '@/hooks/career/use-create-career';
+import { useCreatePost } from '@/hooks/career/use-create-post';
 import {
   CreatePostFormData,
   createPostSchema,
@@ -16,7 +15,7 @@ import {
 import { useAuthStore } from '@/store/use-auth.store';
 
 export default function PostForm() {
-  const { mutate: createCareer, isPending } = useCreateCareer();
+  const { mutate: createPost, isPending } = useCreatePost();
   const { username } = useAuthStore();
 
   const {
@@ -33,7 +32,7 @@ export default function PostForm() {
   });
 
   const onSubmit = (data: CreatePostFormData) => {
-    createCareer(
+    createPost(
       {
         title: data.title,
         content: data.content,
