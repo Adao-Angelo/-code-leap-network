@@ -59,7 +59,7 @@ export function Modal({
           <button
             onClick={onClose}
             className="absolute top-4 right-4 z-10 rounded-full p-2 text-gray-500 hover:bg-gray-100 transition-colors"
-            aria-label="Fechar modal"
+            aria-label="Close modal"
           >
             ✕
           </button>

@@ -18,7 +18,7 @@ export default function Loader({
   return (
     <div
       className={`${spinnerClass} ${className}`}
-      aria-label="Carregando..."
+      aria-label="Loading..."
       role="status"
     />
   );
