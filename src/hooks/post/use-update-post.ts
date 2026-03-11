@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { PostUpdateDto } from '@/services/careers/post.interfaces';
-import { PostsService } from '@/services/careers/post.service';
+import type { PostUpdateDto } from "@/services/careers/post.interfaces";
+import { PostsService } from "@/services/careers/post.service";
 
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
-import { toast } from 'react-hot-toast';
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { AxiosError } from "axios";
+import { toast } from "react-hot-toast";
 
 export function useUpdatePost() {
   const queryClient = useQueryClient();
@@ -15,12 +15,12 @@ export function useUpdatePost() {
       PostsService.updatePost(id, data),
 
     onSuccess: () => {
-      toast.success('Post updated successfully!');
-      queryClient.invalidateQueries({ queryKey: ['posts', 'list'] });
+      toast.success("Post updated successfully!");
+      queryClient.invalidateQueries({ queryKey: ["posts", "list"] });
     },
 
     onError: (error: AxiosError<any>) => {
-      const msg = error?.response?.data?.message || 'Failed to update post';
+      const msg = error?.response?.data?.message || "Failed to update post";
       toast.error(Array.isArray(msg) ? msg[0] : msg);
     },
   });

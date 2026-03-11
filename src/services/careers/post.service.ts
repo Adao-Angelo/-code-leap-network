@@ -1,18 +1,13 @@
-import { API } from '@/services/api';
-import { Post, PostCreateDto, PostUpdateDto } from './post.interfaces';
+import { API } from "@/services/api";
+import { Post, PostCreateDto, PostUpdateDto } from "./post.interfaces";
 
 async function createPost(data: PostCreateDto): Promise<Post> {
-  const response = await API.post('/careers', data);
+  const response = await API.post("/careers", data);
   return response.data;
 }
 
-async function getAllPosts(): Promise<{
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: Post[];
-}> {
-  const response = await API.get('/careers');
+async function getAllPosts(url?: string) {
+  const response = await API.get(url ?? "/careers");
   return response.data;
 }
 

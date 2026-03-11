@@ -1,17 +1,17 @@
-import type { Metadata } from 'next';
-import { Roboto } from 'next/font/google';
-import './globals.css';
-import { Providers } from './providers';
+import type { Metadata } from "next";
+import { Roboto } from "next/font/google";
+import "./globals.css";
+import { Providers } from "./providers";
 
 const roboto = Roboto({
-  subsets: ['latin'],
-  weight: ['100', '300', '400', '500', '700', '900'],
-  variable: '--font-roboto',
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "500", "700", "900"],
+  variable: "--font-roboto",
 });
 
 export const metadata: Metadata = {
-  title: 'CodeLeap Frontend Test',
-  description: 'Frontend technical test built with Next.js',
+  title: "CodeLeap Frontend Test",
+  description: "Frontend technical test built with Next.js",
 };
 
 export default function RootLayout({
@@ -20,9 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={`${roboto.variable} antialiased`}>
-        {' '}
         <Providers>{children}</Providers>
       </body>
     </html>

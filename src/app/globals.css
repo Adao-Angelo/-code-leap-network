@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 :root {
   --background: #dddddd;
@@ -82,7 +82,7 @@ body {
 .spinner::before,
 .mini-spinner::before,
 .white-mini-spinner::before {
-  content: '';
+  content: "";
   grid-area: 1/1;
   margin: 2px;
   border: inherit;
@@ -93,7 +93,7 @@ body {
 .spinner::after,
 .mini-spinner::after,
 .white-mini-spinner::after {
-  content: '';
+  content: "";
   grid-area: 1/1;
   margin: 6px;
   border: inherit;
@@ -104,4 +104,98 @@ body {
 .mini-spinner::after,
 .white-mini-spinner::after {
   margin: 4px;
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-card-enter {
+  animation: cardEnter 0.4s ease-out forwards;
+}
+
+@keyframes modalBackdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-modal-backdrop {
+  animation: modalBackdrop 0.2s ease-out;
+}
+
+.animate-modal-enter {
+  animation: modalEnter 0.25s ease-out;
+}
+
+.skeleton {
+  background-color: #e5e7eb;
+  border-radius: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shine 1.5s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+.skeleton-text {
+  height: 1.25rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-avatar {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+}
+
+.skeleton-card {
+  height: 10rem;
+  width: 100%;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
 }

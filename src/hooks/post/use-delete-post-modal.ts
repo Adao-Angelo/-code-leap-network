@@ -1,5 +1,5 @@
-import { Post } from '@/services/careers/post.interfaces';
-import { useDeletePost } from './use-delete-post';
+import { Post } from "@/services/careers/post.interfaces";
+import { useDeletePost } from "./use-delete-post";
 
 type Props = {
   post?: Post;

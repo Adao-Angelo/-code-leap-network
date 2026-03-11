@@ -1,11 +1,11 @@
-import { ReactNode } from 'react'
+import { ReactNode } from "react";
 
 export interface IModal {
-  modalState: boolean
-  closeModal: () => void
-  children: ReactNode
-  showClosedButton?: boolean
-  className?: string
-  disableOutsideClick?: boolean
-  onOutsideClick?: () => void
+  modalState: boolean;
+  closeModal: () => void;
+  children: ReactNode;
+  showClosedButton?: boolean;
+  className?: string;
+  disableOutsideClick?: boolean;
+  onOutsideClick?: () => void;
 }

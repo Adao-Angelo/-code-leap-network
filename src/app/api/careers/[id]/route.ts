@@ -1,4 +1,4 @@
-const BASE_URL = 'https://dev.codeleap.co.uk/careers/';
+const BASE_URL = "https://dev.codeleap.co.uk/careers/";
 
 type Params = {
   params: Promise<{
@@ -20,9 +20,9 @@ export async function PATCH(req: Request, { params }: Params) {
   const body = await req.json();
 
   const response = await fetch(`${BASE_URL}${id}/`, {
-    method: 'PATCH',
+    method: "PATCH",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
   });
@@ -36,7 +36,7 @@ export async function DELETE(_: Request, { params }: Params) {
   const { id } = await params;
 
   await fetch(`${BASE_URL}${id}/`, {
-    method: 'DELETE',
+    method: "DELETE",
   });
 
   return Response.json({ success: true });

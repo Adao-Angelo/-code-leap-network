@@ -1,4 +1,4 @@
-const BASE_URL = 'https://dev.codeleap.co.uk/careers/';
+const BASE_URL = "https://dev.codeleap.co.uk/careers/";
 
 export async function GET() {
   const response = await fetch(BASE_URL);
@@ -12,9 +12,9 @@ export async function POST(req: Request) {
   const body = await req.json();
 
   const response = await fetch(BASE_URL, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
   });

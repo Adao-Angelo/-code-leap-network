@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 interface AuthState {
   username: string;
@@ -11,21 +11,24 @@ interface AuthState {
 export const useAuthStore = create(
   persist<AuthState>(
     (set) => ({
-      username: '',
+      username: "",
       isAuthenticated: false,
       login: (username) =>
         set({
           username,
           isAuthenticated: true,
         }),
-      logout: () =>
+      logout: () => {
         set({
-          username: '',
+          username: "",
           isAuthenticated: false,
-        }),
+        });
+
+        document.cookie = "token=; path=/; max-age=0";
+      },
     }),
     {
-      name: 'auth-storage',
-    }
-  )
+      name: "auth-storage",
+    },
+  ),
 );

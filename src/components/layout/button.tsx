@@ -1,7 +1,7 @@
-import React from 'react';
-import { twMerge } from 'tailwind-merge';
+import React from "react";
+import { twMerge } from "tailwind-merge";
 
-type ButtonVariant = 'primary' | 'danger' | 'outline' | 'success';
+type ButtonVariant = "primary" | "danger" | "outline" | "success";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
@@ -9,7 +9,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export default function Button({
   children,
-  variant = 'primary',
+  variant = "primary",
   className,
   disabled,
   ...rest

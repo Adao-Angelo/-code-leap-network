@@ -1,22 +1,29 @@
-import { InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from 'react';
-import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
+import { InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from "react";
+import { FieldError, UseFormRegisterReturn } from "react-hook-form";
 
-import Input from './input';
-import Textarea from './textarea';
+import { twMerge } from "tailwind-merge";
+import Input from "./input";
+import Textarea from "./textarea";
 
 interface FormFieldProps {
   label: string;
   error?: FieldError;
   children: ReactNode;
+  className?: string;
 }
 
-export function FormField({ label, error, children }: FormFieldProps) {
+export function FormField({
+  label,
+  error,
+  children,
+  className,
+}: FormFieldProps) {
   return (
-    <div className='mb-5'>
-      <label className='mb-2 block text-sm font-medium'>{label}</label>
+    <div className={twMerge("mb-5", className)}>
+      <label className="mb-2 block text-sm font-medium">{label}</label>
       {children}
       {error && (
-        <p className='mt-1 text-sm text-destructive'>{error.message}</p>
+        <p className="mt-1 text-sm text-destructive">{error.message}</p>
       )}
     </div>
   );

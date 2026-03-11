@@ -1,14 +1,14 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 
 import {
   CreatePostFormData,
   createPostSchema,
-} from '@/schemas/post/post.schema';
+} from "@/schemas/post/post.schema";
 
-import { Post } from '@/services/careers/post.interfaces';
-import { useUpdatePost } from './use-update-post';
+import { Post } from "@/services/careers/post.interfaces";
+import { useUpdatePost } from "./use-update-post";
 
 type Props = {
   post?: Post;
@@ -22,8 +22,8 @@ export function useEditPostModal({ post, isOpen, onClose }: Props) {
   const form = useForm<CreatePostFormData>({
     resolver: zodResolver(createPostSchema),
     defaultValues: {
-      title: '',
-      content: '',
+      title: "",
+      content: "",
     },
   });
 
@@ -31,8 +31,8 @@ export function useEditPostModal({ post, isOpen, onClose }: Props) {
 
   useEffect(() => {
     if (post && isOpen) {
-      setValue('title', post.title);
-      setValue('content', post.content);
+      setValue("title", post.title);
+      setValue("content", post.content);
     }
   }, [post, isOpen, setValue]);
 
@@ -54,7 +54,7 @@ export function useEditPostModal({ post, isOpen, onClose }: Props) {
         onSuccess: () => {
           onClose();
         },
-      }
+      },
     );
   };
 
