@@ -3,7 +3,7 @@
 This repository contains a frontend test app for a CodeLeap job application.
 The app is a React (Next.js) project implementing a post feed with basic CRUD operations connected to the test backend: `https://dev.codeleap.co.uk/careers/`.
 
-## ��� Project Summary
+## Project Summary
 
 - Project: `CodeLeap Network`
 - Framework: Next.js (App Router)
@@ -11,7 +11,7 @@ The app is a React (Next.js) project implementing a post feed with basic CRUD op
 - Purpose: Frontend technical test for a frontend position
 - Backend API: `https://dev.codeleap.co.uk/careers/`
 
-## ��� Functional features implemented
+## Functional features implemented
 
 - Create posts (POST)
 - Read posts list (GET)
@@ -22,7 +22,7 @@ The app is a React (Next.js) project implementing a post feed with basic CRUD op
 - Modals for edit/delete confirmation
 - Input validation with schemas (zod)
 
-## ��� Folder structure
+## Folder structure
 
 - `src/app`: app routes and pages
   - `(auth)/login/page.tsx` - login view (username entry)
@@ -51,7 +51,7 @@ npm install
 npm run dev
 ```
 
-## ��� Available scripts
+## Available scripts
 
 - `npm run dev` - start development server
 - `npm run build` - production build
@@ -59,7 +59,7 @@ npm run dev
 - `npm run lint` - run ESLint
 - `npm run test` - run tests (Jest)
 
-## ���️ App flow
+## App flow
 
 1. Login (type a username saved locally)
 2. Access the feed at `/`
@@ -67,7 +67,7 @@ npm run dev
 4. Edit or delete your own posts only
 5. Posts load from `/api/careers` endpoint
 
-## ��� Optional features and improvements
+## Optional features and improvements
 
 - Likes, comments, mentions support (future)
 - OAuth login (Firebase, etc.)
@@ -77,7 +77,7 @@ npm run dev
 - Smooth transitions and UI animation
 - Persistence (token + local storage login)
 
-## ��� Notes
+## Notes
 
 - This app was created to match CodeLeap test instructions and show a complete CRUD flow.
 - If backend instructions or endpoints change, adjust `src/services/api.ts` and `src/services/careers/post.service.ts` accordingly.
