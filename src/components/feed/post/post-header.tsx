@@ -28,7 +28,7 @@ export default function PostHeader({
             </button>
           </>
         ) : (
-          <span className="text-sm"></span>
+          <span className="text-sm text-gray-200">Owner only</span>
         )}
       </div>
     </div>

@@ -44,11 +44,19 @@ The app is a React (Next.js) project implementing a post feed with basic CRUD op
 
 - `src/store`: local/global state (authentication/user)
 
-## ⚙️ Setup and installation
+## Setup and installation
 
 ```bash
 npm install
 npm run dev
+```
+
+## Environment variables
+
+Create a `.env.local` file in the project root with:
+
+```env
+NEXT_PUBLIC_API_URL=https://dev.codeleap.co.uk/careers/
 ```
 
 ## Available scripts
