@@ -10,8 +10,21 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "CodeLeap Frontend Test",
-  description: "Frontend technical test built with Next.js",
+  title: "CodeLeap Network - Frontend Test",
+  description:
+    "CodeLeap Network app, a Next.js frontend test with post CRUD, authentication, and filters.",
+  openGraph: {
+    title: "CodeLeap Network - Frontend Test",
+    description:
+      "CodeLeap Network app, built for the CodeLeap frontend challenge with CRUD operations.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CodeLeap Network - Frontend Test",
+    description:
+      "CodeLeap Network app, built for the CodeLeap frontend challenge with CRUD operations.",
+  },
 };
 
 export default function RootLayout({

@@ -6,9 +6,15 @@ type PostCardProps = {
   post: Post;
   onEdit: () => void;
   onDelete: () => void;
+  canModify: boolean;
 };
 
-export default function PostCard({ post, onEdit, onDelete }: PostCardProps) {
+export default function PostCard({
+  post,
+  onEdit,
+  onDelete,
+  canModify,
+}: PostCardProps) {
   return (
     <div
       className="
@@ -23,7 +29,12 @@ export default function PostCard({ post, onEdit, onDelete }: PostCardProps) {
         hover:shadow-lg
       "
     >
-      <PostHeader title={post.title} onEdit={onEdit} onDelete={onDelete} />
+      <PostHeader
+        title={post.title}
+        onEdit={onEdit}
+        onDelete={onDelete}
+        canModify={canModify}
+      />
 
       <div
         className="

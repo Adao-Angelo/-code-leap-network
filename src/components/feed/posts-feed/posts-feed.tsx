@@ -8,6 +8,7 @@ import Button from "@/components/layout/button";
 import { usePostFilters } from "@/hooks/post/use-post-filters";
 import { usePosts } from "@/hooks/post/use-posts";
 import { Post } from "@/services/careers/post.interfaces";
+import { useAuthStore } from "@/store/use-auth.store";
 
 import { useState } from "react";
 import PostFilters from "../post/post-filters";
@@ -19,6 +20,7 @@ export default function PostsFeed() {
   const [postToDelete, setPostToDelete] = useState<Post | undefined>(undefined);
 
   const { title, username } = usePostFilters();
+  const { username: loggedUsername } = useAuthStore();
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isError } =
     usePosts({
@@ -57,20 +59,27 @@ export default function PostsFeed() {
         </p>
       )}
 
-      {posts.map((post) => (
-        <PostCard
-          key={post.id}
-          post={post}
-          onEdit={() => {
-            setPostToEdit(post);
-            setIsEditModalOpen(true);
-          }}
-          onDelete={() => {
-            setPostToDelete(post);
-            setIsDeleteModalOpen(true);
-          }}
-        />
-      ))}
+      {posts.map((post) => {
+        const canModify = post.username === loggedUsername;
+
+        return (
+          <PostCard
+            key={post.id}
+            post={post}
+            canModify={canModify}
+            onEdit={() => {
+              if (!canModify) return;
+              setPostToEdit(post);
+              setIsEditModalOpen(true);
+            }}
+            onDelete={() => {
+              if (!canModify) return;
+              setPostToDelete(post);
+              setIsDeleteModalOpen(true);
+            }}
+          />
+        );
+      })}
 
       {isFetchingNextPage && (
         <div className="flex justify-center py-4">
